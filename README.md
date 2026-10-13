@@ -1,5 +1,5 @@
 # Practica_profesional_I
-Proyecto
+
 Soy Anabel Osorio  con experiencia en recolección, limpieza, análisis y visualización de datos para resolver preguntas concretas de negocio. 
 Trabajo desde la pregunta hacia el dato: antes de armar un gráfico, defino qué decisión necesita tomar el cliente y qué información la respalda.
 Mi objetivo no es entregar tablas, sino respuestas: qué está pasando, por qué pasa y qué conviene hacer.
