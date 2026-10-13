@@ -1,1 +1,9 @@
-
+## Diccionario de variables
+| `CODUSU` | Identificador único de hogar | texto |
+| `REGION` | Región geográfica | 1=GBA, 40=NOA, 41=NEA, 42=Cuyo, 43=Pampeana, 44=Patagonia |
+| `IX_TOT` | Cantidad de miembros del hogar | entero |
+| `NIVEL_ED` | Nivel educativo del jefe/a de hogar | 1=Primario incompleto … 5=Superior/Universitario, 9=Ns/Nr |
+| `ITF` | Ingreso Total Familiar ($) | numérico |
+| `DECIFR` | Decil de ingreso familiar | 1 (más bajo) a 10 (más alto) |
+| `IV12_3` | Acceso a conexión de Internet en el hogar | 1=Sí, 2=No, 9=Ns/Nr |
+| `II7` | Disponibilidad de computadora/notebook | 1=Sí, 2=No, 9=Ns/Nr |
