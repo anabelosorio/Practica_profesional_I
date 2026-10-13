@@ -6,6 +6,7 @@ promedio=df["ITF"].mean()
 print("El promedio del ingreso familiar es de:", promedio)
 #o asi junto en unica linea
 #print("El promedio del grupo familiar es de:", df["ITF"].mean())
+#print(f"El promedio del grupo familiar es de: {df['ITF'].mean():.2f}")
 mediana=df["ITF"].median()
 print("La mediana del ingreso familiar es de:", mediana)
 maximo=df["ITF"].max()
