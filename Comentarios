@@ -7,3 +7,15 @@
 | `DECIFR` | Decil de ingreso familiar | 1 (más bajo) a 10 (más alto) |
 | `IV12_3` | Acceso a conexión de Internet en el hogar | 1=Sí, 2=No, 9=Ns/Nr |
 | `II7` | Disponibilidad de computadora/notebook | 1=Sí, 2=No, 9=Ns/Nr |
+
+## Principales hallazgos
+
+- **Ingreso**: el acceso a Internet crece de **41 %** en el quintil más
+  bajo a **86 %** en el más alto; la disponibilidad de computadora, de
+  **56 %** a **92 %**.
+- **Educación**: el acceso a Internet va de **30 %** (primario incompleto)
+  a **92 %** (nivel superior/universitario); el patrón se repite para
+  computadora (44 % → 98 %).
+- **Región**: NOA y Patagonia muestran los quintiles bajos más rezagados
+  (30 % de acceso a Internet), mientras que en Cuyo el quintil alto
+  alcanza la mayor cobertura relevada (94 %).
