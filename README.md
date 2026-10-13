@@ -5,6 +5,7 @@ Trabajo desde la pregunta hacia el dato: antes de armar un gráfico, defino qué
 Mi objetivo no es entregar tablas, sino respuestas: qué está pasando, por qué pasa y qué conviene hacer.
 
 Lo que me diferencia
+
 Enfoque en el negocio: cada análisis parte de una pregunta clara y termina en una recomendación accionable.
 
 Datos confiables: valido, limpio y documento los datos antes de analizarlos, para que las conclusiones se sostengan.
