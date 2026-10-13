@@ -16,4 +16,7 @@ Comunicación clara: presento resultados con visualizaciones simples y explicaci
 Ética y privacidad: trato los datos según principios de confidencialidad, minimización y transparencia, en línea con la Ley 25.326 de Protección de los Datos Personales.
 
 Stack
-Datos: SQL · Python (Pandas, NumPy) · Excel Visualización: Power BI · [Tableau / Looker Studio] Buenas prácticas: limpieza y validación de datos · documentación · ética y protección de datos personales
+
+Datos: SQL · Python (Pandas, NumPy) · Excel 
+Visualización: Power BI/Tableau 
+Buenas prácticas: limpieza y validación de datos · documentación · ética y protección de datos personales
