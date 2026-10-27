@@ -95,19 +95,4 @@ nombre_archivo = "eph_tecnologia_microdatos.csv"
 df_eph.to_csv(nombre_archivo, index=False) 
 print(f"Dataset generado exitosamente: '{nombre_archivo}' con {df_eph.shape[0]} registros y {df_eph.shape[1]} columnas.")
 
-import pandas  as pd
-#como cargar el dataframe desde el csv
-df=pd.read_csv("eph_tecnologia_microdatos.csv")
-#calcular metricas para el ingreso total familiar
-promedio=df["ITF"].mean()
-print("El promedio del ingreso familiar es de:", promedio)
-#o asi junto en unica linea
-#print("El promedio del grupo familiar es de:", df["ITF"].mean())
-mediana=df["ITF"].median()
-print("La mediana del ingreso familiar es de:", mediana)
-maximo=df["ITF"].max()
-print("El maximo  del ingreso familiar es de:", maximo)
-minimo=df["ITF"].min()
-print("El minimo  del ingreso familiar es de:", minimo)
-desviacion=df ["ITF"].std()
-print("La desviacion del ingreso familiar es de:", desviacion)
+
