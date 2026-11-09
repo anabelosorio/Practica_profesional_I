@@ -15,6 +15,7 @@ minimo=df["ITF"].min()
 print("El minimo  del ingreso familiar es de:", minimo)
 desviacion=df ["ITF"].std()
 print("La desviacion del ingreso familiar es de:", desviacion)
+----------------------------
 
 {
  "cells": [
