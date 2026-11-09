@@ -2,3 +2,111 @@ Secciones: Resumen, Introducción y Marco Teórico (Sociología),
 Consideraciones Éticas, Metodología de Limpieza y Procesamiento (Python), 
 Análisis Cuantitativo y Gráficos (Estadística), Conclusiones y Recomendaciones 
 de Política Pública.
+
+
+
+Informe Técnico
+Diagnóstico de la Brecha Digital en Argentina
+Práctica Profesional I
+Técnico Superior en Ciencia de Datos e IA
+Fuente de datos: Encuesta Permanente de Hogares (EPH - INDEC)
+
+Alumno/a: Anabel Osorio
+Repositorio: https://github.com/usuario/brecha-digital-eph
+
+ 1. Introducción y Resumen Ejecutivo
+Contexto del estudio
+Hoy en día tener Internet y una computadora en el hogar es muy importante para estudiar, trabajar, hacer trámites y acceder a información. Sin embargo, no todos los hogares tienen el mismo acceso a estas tecnologías. A esta diferencia se la conoce como brecha digital. En este trabajo usamos datos de la Encuesta Permanente de Hogares (EPH) del INDEC para estudiar esta problemática en Argentina.
+Objetivo general
+Diagnosticar la brecha digital identificando las diferencias en el acceso a Internet y a computadora según el ingreso del hogar, el nivel educativo del jefe/a de hogar y la región geográfica.
+Resumen metodológico
+Trabajamos en Python con la librería Pandas. Primero limpiamos los datos (valores faltantes y códigos de no respuesta), después calculamos estadísticas descriptivas y tablas cruzadas, aplicamos el test de chi-cuadrado para ver si las relaciones son significativas y finalmente hicimos gráficos con Matplotlib y Seaborn.
+Principales hallazgos
+•	El 73,7% de los hogares tiene Internet y el 64,1% tiene computadora.
+•	El ingreso influye: en el 20% más pobre solo el 48% tiene computadora, mientras que en el 20% más rico el 83% la tiene.
+•	La educación es lo que más diferencia marca: si el jefe/a no terminó la primaria, solo el 43% tiene Internet; con estudios superiores, el 98%.
+•	No encontramos diferencias importantes entre las regiones del país.
+2. Marco Teórico y Consideraciones Éticas
+La brecha digital no es solo tener o no tener un dispositivo. Los autores suelen hablar de un primer nivel (el acceso a Internet y equipos) y un segundo nivel (saber usarlos). En este trabajo nos centramos en el primer nivel, que es el que podemos medir con los datos de la EPH.
+Preguntas e hipótesis de investigación
+Pregunta	Hipótesis	Variable independiente	Variable dependiente
+¿El ingreso del hogar influye en el acceso a la tecnología?	H1: A mayor ingreso per cápita, mayor acceso a Internet y computadora.	IPCF	II7, IV12_3
+¿El nivel educativo del jefe/a influye en el acceso?	H2: Los hogares con jefe/a más educado tienen más acceso a computadora e Internet.	NIVEL_ED	IV12_3, II7
+¿Hay diferencias entre regiones?	H3: Las regiones del norte (NOA y NEA) tienen menos acceso que GBA y Pampeana.	REGION	II7, IV12_3
+
+Tratamiento ético de los datos
+•	Usamos solo datos anonimizados del INDEC. Los hogares se identifican con un código (CODUSU) que no permite saber quiénes son.
+•	Los resultados se muestran siempre agrupados y no buscan discriminar ni estigmatizar a ningún grupo social o región. Las diferencias se entienden como desigualdades de oportunidades.
+•	La información se usa de forma responsable, con el fin de aportar a políticas públicas de inclusión.
+•	Todo el código está en GitHub para que cualquiera pueda reproducir el análisis.
+3. Metodologías de limpieza y procesamiento
+Selección de variables
+Usamos las variables REGION (región), NIVEL_ED (nivel educativo del jefe/a), ITF (ingreso total familiar), IX_TOT (cantidad de miembros del hogar), II7 (Internet) e IV12_3 (computadora). Con ITF e IX_TOT calculamos el IPCF (ingreso per cápita familiar), porque no es lo mismo un ingreso para una persona sola que para una familia de cinco.
+Tratamiento de nulos e inconsistencias
+•	La base tenía 1.000 hogares. No había duplicados.
+•	El código 9 significa “no sabe / no responde”. Lo reemplazamos por valor nulo en NIVEL_ED (17 casos), II7 (15) e IV12_3 (12).
+•	Había 53 hogares sin ingreso (ITF). Como el ingreso es clave para el análisis, los eliminamos. Quedaron 947 hogares.
+•	IV12_3 además tenía 36 valores vacíos. Esos hogares se dejaron, pero no se cuentan en los cálculos de computadora.
+•	Hay algunos ingresos muy altos (outliers), pero no los borramos porque son datos reales. Por eso usamos la mediana además de la media.
+Recodificación
+Pasamos los códigos numéricos del INDEC a nombres: por ejemplo la región 40 pasa a “NOA”, el nivel educativo 4 a “Secundario completo” y en II7 e IV12_3 el 1 pasa a “Sí” y el 2 a “No”. También dividimos a los hogares en 5 grupos de ingreso (quintiles), donde Q1 es el 20% más pobre y Q5 el 20% más rico.
+Dataset limpio
+Todo esto lo hace el script main.py, que guarda el resultado en el archivo DATA/df_clean.csv.
+4. Análisis Cuantitativo y Gráficos
+Análisis univariado
+El ingreso per cápita promedio es de $301.524, pero la mediana es de $203.216. Que la media sea mucho más alta que la mediana muestra que hay pocos hogares con ingresos muy altos que “tiran” el promedio hacia arriba. El 25% más pobre tiene un IPCF menor a $119.919 y el 25% más rico supera los $352.175. Los hogares tienen en promedio 3,3 personas.
+ 
+Gráfico 1. Distribución del ingreso per cápita familiar.
+En el gráfico se ve que la mayoría de los hogares se concentra en ingresos bajos y hay una cola larga hacia la derecha con pocos hogares de ingresos muy altos.
+H1: Ingreso y acceso a la tecnología
+Como el IPCF es continuo y el acceso es Sí/No, agrupamos el ingreso en quintiles para poder hacer la tabla de contingencia y el chi-cuadrado. Elegimos quintiles porque es la división que usa el INDEC y deja grupos de tamaño suficiente.
+Y conviene usarlos cuando tenés una variable numérica (como el ingreso) y necesitás compararla en grupos.
+
+Quintil	% con Internet	% con computadora
+Q1 (más pobre)	59,0%	48,1%
+Q2	64,1%	56,4%
+Q3	76,6%	62,4%
+Q4	80,1%	70,2%
+Q5 (más rico)	88,7%	83,3%
+ 
+Gráfico 2. Acceso a Internet y computadora según quintil de ingreso.
+A medida que sube el ingreso, aumenta el acceso. La diferencia entre el quintil más rico y el más pobre es de casi 30 puntos en Internet y de 35 puntos en computadora. 
+Esto muestra que la computadora es lo más difícil de conseguir para los hogares pobres, probablemente porque es un gasto grande, mientras que Internet se puede tener por ejemplo desde el celular. 
+El test de chi-cuadrado dio un p-valor menor a 0,05 en los dos casos, así que la relación es significativa. La hipótesis 1 se cumple.
+También comparamos el ingreso per cápita (IPCF) de los hogares que tienen acceso con el de los que no tienen, usando la media y la mediana:
+Grupo	Media del IPCF	Mediana del IPCF	Hogares
+Con Internet	$335.620	$228.531	687
+Sin Internet	$205.139	$143.305	245
+Con computadora	$354.075	$240.838	578
+Sin computadora	$207.827	$158.544	324
+
+Los hogares con Internet tienen una mediana de IPCF de $228.531, contra $143.305 de los que no tienen: un 59% más. En computadora pasa lo mismo: $240.838 contra $158.544 (52% más). Con la media las diferencias son todavía mayores ($335.620 contra $205.139 en Internet), pero hay que tener cuidado porque la media se ve afectada por los pocos hogares con ingresos muy altos. Por eso la mediana es la medida más representativa del hogar típico. En los dos casos, los hogares conectados y con computadora tienen ingresos claramente más altos.
+ 
+Gráfico 3. Tenencia de computadora en el quintil más pobre (Q1) y en el más rico (Q5).
+Los gráficos de torta comparan los dos extremos de ingreso. En el quintil más pobre, más de la mitad de los hogares (51,9%) no tiene computadora. En el quintil más rico, en cambio, solo el 16,7% no la tiene. Es decir, un hogar pobre tiene tres veces más probabilidades de no tener computadora que un hogar rico.
+H2: Nivel educativo y acceso a la tecnología
+Nivel educativo del jefe/a	% con Internet	% con computadora
+Primario incompleto	43,4%	31,9%
+Primario completo	61,8%	50,2%
+Secundario incompleto	71,3%	63,1%
+Secundario completo	85,8%	76,1%
+Superior	98,4%	91,1%
+ 
+Gráfico 4. Acceso según nivel educativo del jefe/a de hogar.
+
+Acá la diferencia es todavía más grande que con el ingreso. Cuando el jefe/a no terminó la primaria, menos de la mitad de los hogares tiene Internet y solo 3 de cada 10 tienen computadora. En cambio, con estudios superiores el acceso es casi total. El chi-cuadrado fue el más alto de todo el análisis (107,6 para Internet y 101,1 para computadora, p < 0,05). La hipótesis 2 se cumple. Hay que tener en cuenta que educación e ingreso están relacionados: los que estudian más suelen ganar más.
+H3: Región y acceso a la tecnología
+ 
+Gráfico 5. Acceso según región.
+Esperábamos que el NOA y el NEA tuvieran menos acceso, pero los resultados muestran que todas las regiones están muy parecidas (Internet entre 71% y 76%, computadora entre 61% y 67%). El chi-cuadrado dio un p-valor de 0,93, mucho mayor a 0,05, así que no hay relación significativa. La hipótesis 3 no se cumple. Una posible explicación es que la EPH solo encuesta ciudades, entonces no aparecen las zonas rurales, que es donde probablemente haya más problemas de conectividad.
+5. Conclusiones y Recomendaciones
+La brecha digital existe y depende sobre todo de la situación social del hogar: el nivel educativo y el ingreso son los factores que más influyen, mientras que la región no marca diferencias dentro de las ciudades. Además, la falta de computadora es un problema más grande que la falta de Internet.
+Recomendaciones de política pública
+•	Entregar computadoras a hogares de bajos ingresos, sobre todo con chicos en edad escolar, ya que es donde la brecha es mayor.
+•	Talleres de alfabetización digital para adultos con bajo nivel educativo, por ejemplo en centros comunitarios o junto con programas para terminar la escuela.
+•	Tarifa social de Internet para los hogares más pobres, donde 4 de cada 10 no tienen conexión.
+•	Estudiar las zonas rurales con otras fuentes de datos, porque la EPH no las incluye.
+Limitaciones
+•	La base no tiene el factor de expansión (PONDERA), así que los resultados valen para la muestra y no para todo el país.
+•	Se eliminaron 53 hogares sin ingreso, lo que puede afectar un poco los resultados.
+•	Que dos variables es
